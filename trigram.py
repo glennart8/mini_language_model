@@ -30,7 +30,13 @@ def generate_text(start_words, length=10):
         result.append(next_word)
         word1, word2 = word2, next_word  # Flytta fram två ord
 
-    return ' '.join(result)
+    sentence = ' '.join(result) # sätt ihop till en mening
+    sentence = sentence[0].upper() + sentence[1:] # gör första bokstaven stor
+    
+    if sentence[-1] not in '.!?': # Lägg till punkt om det saknas i slutet
+        sentence += '.'
+        
+    return sentence
 
 # Exempel: vi startar med "katten bodde"
 print(generate_text(("katten", "bodde"), length=10))
